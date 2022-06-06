@@ -151,20 +151,14 @@
    * @param  b coordinates y
    * @returns boolean
    */
-
   function hit(a, b) {
-    //Revisa si a colisiona con b
     let hit = false;
-    //colisiones horizontales
     if (b.x + b.width >= a.x && b.x < a.x + a.width) {
-      //colisisones verticales
       if (b.y + b.height >= a.y && b.y < a.y + a.height) hit = true;
     }
-    //colisión de a con b
     if (b.x <= a.x && b.x + b.width >= a.x + a.width) {
       if (b.y <= a.y && b.y + b.height >= a.y + a.height) hit = true;
     }
-    //colisión de b con a
     if (a.x <= b.x && a.x + a.width >= b.x + b.width) {
       if (a.y <= b.y && a.y + a.height >= b.y + b.height) hit = true;
     }
@@ -189,31 +183,32 @@
  * creation of objectss
  */
 
-let board = new Board(900, 500);
-let bar = new Bar(20, 100, 40, 100, board);
-let bar2 = new Bar(735, 100, 40, 100, board);
-let canvas = document.getElementById("canvas");
-let board_view = new BoardView(canvas, board);
-let ball = new Ball(350, 100, 10, board);
+const board = new Board(900, 500);
+const bar = new Bar(20, 100, 40, 100, board);
+const bar2 = new Bar(735, 100, 40, 100, board);
+const canvas = document.getElementById("canvas");
+const board_view = new BoardView(canvas, board);
+const ball = new Ball(350, 100, 10, board);
 
-document.addEventListener("keydown", function (ev) {
-  if (ev.keyCode == 38) {
-    ev.preventDefault();
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode == 38) {
+    e.preventDefault();
     bar.up();
-  } else if (ev.keyCode == 40) {
-    ev.preventDefault();
+  } else if (e.keyCode == 40) {
+    e.preventDefault();
     bar.down();
-  } else if (ev.keyCode === 87) {
-    ev.preventDefault();
+  } else if (e.keyCode === 87) {
+    e.preventDefault();
     bar2.up();
-  } else if (ev.keyCode === 83) {
-    ev.preventDefault();
+  } else if (e.keyCode === 83) {
+    e.preventDefault();
     bar2.down();
-  } else if (ev.keyCode === 32) {
-    ev.preventDefault();
+  } else if (e.keyCode === 32) {
+    e.preventDefault();
     board.playin = !board.playin;
   }
 });
+
 window.requestAnimationFrame(Controller);
 board_view.draw();
 function Controller() {
