@@ -183,9 +183,9 @@
  * creation of objectss
  */
 
-const board = new Board(900, 500);
+const board = new Board(1000, 600);
 const bar = new Bar(20, 100, 40, 100, board);
-const bar2 = new Bar(735, 100, 40, 100, board);
+const bar2 = new Bar(935, 100, 40, 100, board);
 const canvas = document.getElementById("canvas");
 const board_view = new BoardView(canvas, board);
 const ball = new Ball(350, 100, 10, board);
